@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio site">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container">
+      <a href="index.html" class="nav-brand" data-nav-brand>Name</a>
+      <ul class="nav-links">
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="art.html">Art</a></li>
+        <li><a href="index.html#mindfulness-section">Mindfulness Circle</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="hero">
+    <!-- filled in by js/main.js from js/config.js -->
+  </header>
+
+  <main class="container">
+
+    <section class="page-section" id="writing">
+      <div class="section-header">
+        <h2>Writing</h2>
+        <a href="writing.html" id="writing-view-all">View all →</a>
+      </div>
+      <div class="writing-list" id="writing-preview">
+        <!-- filled in by js/main.js from js/config.js -->
+      </div>
+    </section>
+
+    <section class="page-section" id="art">
+      <div class="section-header">
+        <h2>Art</h2>
+        <a href="art.html" id="art-view-all">View all →</a>
+      </div>
+      <p class="section-intro">Original pieces available to purchase. Click through to buy.</p>
+      <div class="art-gallery" id="art-preview">
+        <!-- filled in by js/main.js from js/config.js -->
+      </div>
+    </section>
+
+    <section class="page-section" id="mindfulness-section">
+      <div class="section-header">
+        <h2>Mindfulness Circle</h2>
+      </div>
+      <div id="mindfulness">
+        <!-- filled in by js/main.js from js/config.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="connect">
+    <p class="contact-line" data-contact></p>
+    <div class="socials" data-socials>
+      <!-- filled in by js/main.js from js/config.js -->
+    </div>
+    <p>&copy; <span data-year></span> <span data-nav-brand></span>. All rights reserved.</p>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

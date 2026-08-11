@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Admin — edit site content">
+  <title>Admin</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-locked">
+
+  <div class="admin-lock-overlay" id="admin-lock-overlay">
+    <form class="admin-lock-box" id="admin-lock-form">
+      <h1>Admin Access</h1>
+      <p>Enter the admin password to continue.</p>
+      <input type="password" id="admin-lock-password" placeholder="Password" autocomplete="current-password" required>
+      <button type="submit" class="btn btn-primary">Unlock</button>
+      <p class="admin-lock-error" id="admin-lock-error"></p>
+    </form>
+  </div>
+
+  <nav class="site-nav">
+    <div class="container">
+      <a href="index.html" class="nav-brand">← Back to site</a>
+      <ul class="nav-links">
+        <li><span style="cursor:default;">Admin</span></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <h1>Site Admin</h1>
+    <p>Edit every piece of content on the site from this page.</p>
+  </header>
+
+  <main class="container admin-main">
+
+    <div class="admin-banner" id="draft-banner" style="display:none;">
+      <strong>Heads up:</strong> you're viewing an unsaved draft stored in this browser only.
+      <a href="#" id="discard-draft-link">Discard it and reload the current site content</a>.
+    </div>
+
+    <p class="admin-intro">
+      This site is static (plain files on GitHub Pages), so there's no database behind this form.
+      Edit anything below — your changes are auto-saved to <em>this browser</em> as you type, and you
+      can preview them live. When you're happy, click <strong>Download config.js</strong> below,
+      replace <code>js/config.js</code> in your project with the downloaded file, then commit and
+      push to make the changes live on the actual site.
+    </p>
+
+    <!-- ---------- Site ---------- -->
+    <section class="admin-section">
+      <h2>Site</h2>
+      <p class="admin-section-hint">Browser tab title and description.</p>
+      <div class="admin-field">
+        <label for="site-title">Site title</label>
+        <input type="text" id="site-title">
+      </div>
+      <div class="admin-field">
+        <label for="site-description">Site description</label>
+        <input type="text" id="site-description">
+      </div>
+      <div class="admin-field">
+        <label for="site-favicon">
+          Favicon path
+          <span class="admin-field-hint">Path to an image in the images/ folder. Leave blank to skip.</span>
+        </label>
+        <input type="text" id="site-favicon" placeholder="images/favicon.png">
+      </div>
+    </section>
+
+    <!-- ---------- About / Hero ---------- -->
+    <section class="admin-section">
+      <h2>About</h2>
+      <p class="admin-section-hint">Your name, tagline, bio, and photo shown at the top of the homepage.</p>
+      <div class="admin-field">
+        <label for="person-name">Name</label>
+        <input type="text" id="person-name">
+      </div>
+      <div class="admin-field">
+        <label for="person-tagline">Tagline</label>
+        <input type="text" id="person-tagline">
+      </div>
+      <div class="admin-field">
+        <label for="person-bio">Bio</label>
+        <textarea id="person-bio"></textarea>
+      </div>
+      <div class="admin-field">
+        <label for="person-avatar">
+          Photo path
+          <span class="admin-field-hint">Path to an image in the images/ folder. Leave blank for a placeholder.</span>
+        </label>
+        <input type="text" id="person-avatar" placeholder="images/profile.jpg">
+      </div>
+      <div class="admin-field">
+        <label for="person-email">
+          Contact email
+          <span class="admin-field-hint">Shown in the footer as "Contact me at ...", above the social icons. Click-to-copy, not a mailto link.</span>
+        </label>
+        <input type="text" id="person-email" placeholder="you@example.com">
+      </div>
+    </section>
+
+    <!-- ---------- Socials ---------- -->
+    <section class="admin-section">
+      <h2>Socials</h2>
+      <p class="admin-section-hint">Icon links shown in the footer.</p>
+      <div id="socials-list"></div>
+      <button type="button" class="btn-block" id="add-social">+ Add social link</button>
+    </section>
+
+    <!-- ---------- Writing ---------- -->
+    <section class="admin-section">
+      <h2>Writing</h2>
+      <p class="admin-section-hint">The homepage shows the first 3 posts below; writing.html shows all of them, in this order.</p>
+      <div class="admin-field">
+        <label for="writing-view-all-url">
+          "View all" link (on the homepage)
+          <span class="admin-field-hint">Defaults to writing.html. Point it elsewhere (e.g. an external blog) and it opens in a new tab automatically.</span>
+        </label>
+        <input type="text" id="writing-view-all-url">
+      </div>
+      <div id="writing-list"></div>
+      <button type="button" class="btn-block" id="add-writing">+ Add writing post</button>
+    </section>
+
+    <!-- ---------- Art ---------- -->
+    <section class="admin-section">
+      <h2>Art</h2>
+      <p class="admin-section-hint">The homepage shows the first 3 pieces below; art.html shows all of them, in this order.</p>
+      <div class="admin-field">
+        <label for="art-view-all-url">
+          "View all" link (on the homepage)
+          <span class="admin-field-hint">Defaults to art.html. Point it elsewhere (e.g. an external shop) and it opens in a new tab automatically.</span>
+        </label>
+        <input type="text" id="art-view-all-url">
+      </div>
+      <div id="art-list"></div>
+      <button type="button" class="btn-block" id="add-art">+ Add art piece</button>
+    </section>
+
+    <!-- ---------- Mindfulness Circle ---------- -->
+    <section class="admin-section">
+      <h2>Mindfulness Circle</h2>
+      <div class="admin-field">
+        <label for="mind-title">Title</label>
+        <input type="text" id="mind-title">
+      </div>
+      <div class="admin-field">
+        <label for="mind-image">
+          Image path
+          <span class="admin-field-hint">Path to an image in the images/ folder. Leave blank for a placeholder.</span>
+        </label>
+        <input type="text" id="mind-image" placeholder="images/circle.jpg">
+      </div>
+      <div class="admin-field">
+        <label for="mind-description">Description</label>
+        <textarea id="mind-description"></textarea>
+      </div>
+      <div class="admin-field">
+        <label>Details (bullet list)</label>
+        <div id="mind-details-list"></div>
+        <button type="button" class="btn-block" id="add-detail">+ Add detail line</button>
+      </div>
+      <div class="admin-field">
+        <label for="mind-url">
+          Learn more link
+          <span class="admin-field-hint">The "Learn more" button always shows — this is just where it links to.</span>
+        </label>
+        <input type="text" id="mind-url" placeholder="#">
+      </div>
+    </section>
+
+    <!-- ---------- Security ---------- -->
+    <section class="admin-section">
+      <h2>Security</h2>
+      <p class="admin-section-hint">
+        Change the password required to open this admin page. Only takes effect after you
+        download/copy config.js, replace the file, and redeploy.
+      </p>
+      <div class="admin-field">
+        <label for="new-password">New password</label>
+        <input type="password" id="new-password" autocomplete="new-password">
+      </div>
+      <div class="admin-field">
+        <label for="confirm-password">Confirm new password</label>
+        <input type="password" id="confirm-password" autocomplete="new-password">
+      </div>
+      <div class="admin-actions">
+        <button type="button" class="btn btn-secondary" id="update-password-btn">Update password</button>
+        <span class="admin-status" id="password-status"></span>
+      </div>
+    </section>
+
+    <!-- ---------- Publish ---------- -->
+    <section class="admin-section">
+      <h2>Publish your changes</h2>
+      <p class="admin-section-hint">
+        Download the updated file, replace <code>js/config.js</code> in your project folder,
+        then commit and push to GitHub to make it live.
+      </p>
+      <div class="admin-actions">
+        <button type="button" class="btn btn-primary" id="download-btn">Download config.js</button>
+        <button type="button" class="btn btn-secondary" id="copy-btn">Copy to clipboard</button>
+        <button type="button" class="btn btn-danger" id="reset-btn">Reset to file defaults</button>
+        <span class="admin-status" id="admin-status"></span>
+      </div>
+      <div class="admin-field" style="margin-top:1.25rem;">
+        <label for="preview-textarea">Live preview of config.js</label>
+        <textarea id="preview-textarea" class="admin-preview" readonly></textarea>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
