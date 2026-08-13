@@ -34,22 +34,6 @@ can't save changes back to the repo by itself:
 `admin.html` isn't linked from the site's nav — it's a tool for you, not
 site visitors.
 
-#### Admin password
-
-`admin.html` is behind a password screen (default password: `changeme`).
-**Change it immediately:**
-
-1. Log in with `changeme`.
-2. Scroll to the **Security** section, set a new password, and click **Update password**.
-3. Click **Download config.js**, replace the file in your project, then commit and push.
-
-This is a static site with no server, so the "login" is just a SHA-256
-hash comparison done in your browser (stored as `admin.passwordHash` in
-`js/config.js`) — it stops casual visitors from poking around, but the
-check itself is visible to anyone who views source, so don't reuse a
-password you use anywhere sensitive. Unlocking only lasts for the current
-browser tab session.
-
 ### Adding images
 
 1. Drop image files into the `images/` folder (e.g. `images/profile.jpg`, `images/art1.jpg`).
